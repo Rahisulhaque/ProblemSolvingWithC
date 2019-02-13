@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import Name from './Name';
+import MyButton from './MyButton';
+
 
 class App extends Component {
+  constructor(props){
+    
+    super(props);
+    this.state= {
+      magicHappen : "Wanna see a magic?",
+    
+    }
+  }
+  mymagic(){
+    this.setState({
+      magicHappen : "Its magic!", 
+    
+      
+    })
+  }
   render() {
+    
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        This is a Component!
+        
+        <p>{this.state.magicHappen}</p>
+
+        <Name/>
+        <button onClick={this.mymagic.bind(this)}><MyButton /></button>
       </div>
     );
   }
