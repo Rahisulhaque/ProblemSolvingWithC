@@ -1,15 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import './App.css';
+import Select from 'react-select';
+import { colourOptions, groupedOptions } from '../data';
 
-class Name extends Component {
-  render() {
-    return (
-      <div className="Name">
-        This is a Name component!
-      </div>
-    );
-  }
-}
+const groupStyles = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+};
+const groupBadgeStyles = {
+  backgroundColor: '#EBECF0',
+  borderRadius: '2em',
+  color: '#172B4D',
+  display: 'inline-block',
+  fontSize: 12,
+  fontWeight: 'normal',
+  lineHeight: '1',
+  minWidth: 1,
+  padding: '0.16666666666667em 0.5em',
+  textAlign: 'center',
+};
 
-export default Name;
+const formatGroupLabel = data => (
+  <div style={groupStyles}>
+    <span>{data.label}</span>
+    <span style={groupBadgeStyles}>{data.options.length}</span>
+  </div>
+);
+
+export default () => (
+  <Select
+    defaultValue={colourOptions[1]}
+    options={groupedOptions}
+    formatGroupLabel={formatGroupLabel}
+  />
+);
